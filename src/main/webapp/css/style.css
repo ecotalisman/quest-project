@@ -30,6 +30,7 @@ div {
     display: flex;
     justify-content: center;
     gap: 20px;
+    margin-bottom: 50px;
 }
 
 .button-container button.agree {
@@ -98,4 +99,8 @@ button:hover {
 
 .task-list li {
     margin-bottom: 10px;
+}
+
+.spacer {
+    height: 40px;
 }
