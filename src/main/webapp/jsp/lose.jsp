@@ -30,7 +30,7 @@
         </c:if>
     </div>
     <div class="button-container">
-        <form action="/" method="get">
+        <form action="/restart" method="get">
             <button type="submit" class="agree">Почати гру спочатку</button>
         </form>
     </div>
