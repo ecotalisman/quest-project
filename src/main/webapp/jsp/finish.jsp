@@ -21,7 +21,7 @@
     </div>
     <div class="button-container">
         <form action="/" method="get">
-            <button type="submit" class="agree">Почати гру спочатку</button>
+            <button type="submit" class="agree">Розпочати гру знову</button>
         </form>
     </div>
 </div>
