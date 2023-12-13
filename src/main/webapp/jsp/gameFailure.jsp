@@ -13,19 +13,19 @@
 </div>
 <div class="centered-text">
     <div class="prompt">
-        <c:set var="losefirst" value="<%= AppConfig.STEP_START_NOT_ACCEPTED %>" />
-        <c:set var="losesecond" value="<%= AppConfig.STEP_1_NOT_ACCEPTED %>" />
-        <c:set var="losethird" value="<%= AppConfig.STEP_2_NOT_ACCEPTED %>" />
+        <c:set var="gameStartFailure" value="<%= AppConfig.STEP_START_NOT_ACCEPTED %>" />
+        <c:set var="gameChallengeFailure" value="<%= AppConfig.STEP_1_NOT_ACCEPTED %>" />
+        <c:set var="gameFinishFailure" value="<%= AppConfig.STEP_2_NOT_ACCEPTED %>" />
 
-        <c:if test="${answer == losefirst}">
+        <c:if test="${answer == gameStartFailure}">
             <h4>Ваша 'Одіссея' закінчена.</h4>
         </c:if>
 
-        <c:if test="${answer == losesecond}">
+        <c:if test="${answer == gameChallengeFailure}">
             <h4>Вашої хоробрості та мудрості не вистачило для пошуку артефакту "Око Світу"...</h4>
         </c:if>
 
-        <c:if test="${answer == losethird}">
+        <c:if test="${answer == gameFinishFailure}">
             <h4>Сили покинули вас після тяжких випробувань, нехай щастить!</h4>
         </c:if>
     </div>

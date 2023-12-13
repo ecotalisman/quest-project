@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.FirstService;
+import service.GameChallengeService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @ExtendWith(MockitoExtension.class)
-class FirstServletTest extends Mockito {
+class GameChallengeServletTest extends Mockito {
     @Mock
     private HttpServletRequest req;
     @Mock
@@ -24,22 +24,22 @@ class FirstServletTest extends Mockito {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private FirstService firstService;
+    private GameChallengeService gameChallengeService;
     @InjectMocks
-    private FirstServlet firstServlet;
+    private GameChallengeServlet gameChallengeServlet;
     @Test
     public void testDoPostWithTrue() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", "jsp/first.jsp");
+        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", "jsp/gameChallenge.jsp");
 
         when(req.getParameter("answer")).thenReturn("true");
-        when(firstService.call(true)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher("jsp/first.jsp")).thenReturn(requestDispatcher);
+        when(gameChallengeService.call(true)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher("jsp/gameChallenge.jsp")).thenReturn(requestDispatcher);
 
-        firstServlet.doPost(req, resp);
+        gameChallengeServlet.doPost(req, resp);
 
         verify(resp).setStatus(201);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher("jsp/first.jsp");
+        verify(req).getRequestDispatcher("jsp/gameChallenge.jsp");
         verify(requestDispatcher).forward(req, resp);
     }
 }

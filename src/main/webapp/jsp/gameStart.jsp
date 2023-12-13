@@ -32,11 +32,11 @@
             </ol>
         </div>
         <div class="button-container">
-            <form action="/second" method="post">
+            <form action="/challenge" method="post">
                 <input type="hidden" name="answer" value="true"/>
                 <button type="submit" class="agree">Виконати всі завдання</button>
             </form>
-            <form action="/losesecond" method="post">
+            <form action="/challengefailure" method="post">
                 <input type="hidden" name="answer" value="false"/>
                 <button type="submit">Відмовитися</button>
             </form>

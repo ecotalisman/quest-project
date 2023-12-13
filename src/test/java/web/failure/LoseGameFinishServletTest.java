@@ -1,4 +1,4 @@
-package web.lose;
+package web.failure;
 
 import models.AnswerChallenge;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.FirstService;
+import service.GameFinishService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class LoseFirstServletTest {
+class LoseGameFinishServletTest {
     @Mock
     private HttpServletRequest req;
     @Mock
@@ -25,22 +25,23 @@ class LoseFirstServletTest {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private FirstService firstService;
+    private GameFinishService gameFinishService;
     @InjectMocks
-    private LoseFirstServlet loseFirstServlet;
+    private GameFinishFailureServlet gameFinishFailureServlet;
+
     @Test
     public void testDoPostWithFalse() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test false message", "jsp/lose.jsp");
+        AnswerChallenge mockAnswer = new AnswerChallenge("Test false message", "jsp/gameFailure.jsp");
 
         when(req.getParameter("answer")).thenReturn("false");
-        when(firstService.call(false)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher("jsp/lose.jsp")).thenReturn(requestDispatcher);
+        when(gameFinishService.call(false)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher("jsp/gameFailure.jsp")).thenReturn(requestDispatcher);
 
-        loseFirstServlet.doPost(req, resp);
+        gameFinishFailureServlet.doPost(req, resp);
 
         verify(resp).setStatus(201);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher("jsp/lose.jsp");
+        verify(req).getRequestDispatcher("jsp/gameFailure.jsp");
         verify(requestDispatcher).forward(req, resp);
     }
 }

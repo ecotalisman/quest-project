@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.ThirdService;
+import service.GameInitializationService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @ExtendWith(MockitoExtension.class)
-class ThirdServletTest extends Mockito {
+class GameStartServletTest extends Mockito {
     @Mock
     private HttpServletRequest req;
     @Mock
@@ -24,22 +24,22 @@ class ThirdServletTest extends Mockito {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private ThirdService thirdService;
+    private GameInitializationService gameInitializationService;
     @InjectMocks
-    private ThirdServlet thirdServlet;
+    private GameStartServlet gameStartServlet;
     @Test
     public void testDoPostWithTrue() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", "jsp/finish.jsp");
+        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", "jsp/gameStart.jsp");
 
         when(req.getParameter("answer")).thenReturn("true");
-        when(thirdService.call(true)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher("jsp/finish.jsp")).thenReturn(requestDispatcher);
+        when(gameInitializationService.call(true)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher("jsp/gameStart.jsp")).thenReturn(requestDispatcher);
 
-        thirdServlet.doPost(req, resp);
+        gameStartServlet.doPost(req, resp);
 
         verify(resp).setStatus(201);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher("jsp/finish.jsp");
+        verify(req).getRequestDispatcher("jsp/gameStart.jsp");
         verify(requestDispatcher).forward(req, resp);
     }
 }

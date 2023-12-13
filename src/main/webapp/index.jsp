@@ -27,11 +27,11 @@
     <div class="prompt">
         <h5 class="question">Готові розпочати 'Одіссею'?</h5>
         <div class="button-container">
-            <form action="/first" method="post">
+            <form action="/start" method="post">
                 <input type="hidden" name="answer" value="true"/>
                 <button type="submit" class="agree">Погодитися</button>
             </form>
-            <form action="/losefirst" method="post">
+            <form action="/startfailure" method="post">
                 <input type="hidden" name="answer" value="false"/>
                 <button type="submit">Відмовитися</button>
             </form>

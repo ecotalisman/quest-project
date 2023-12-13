@@ -1,4 +1,4 @@
-package web.lose;
+package web.failure;
 
 import models.AnswerChallenge;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.ThirdService;
+import service.GameInitializationService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class LoseThirdServletTest {
+class LoseGameStartServletTest {
     @Mock
     private HttpServletRequest req;
     @Mock
@@ -25,23 +25,22 @@ class LoseThirdServletTest {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private ThirdService thirdService;
+    private GameInitializationService gameInitializationService;
     @InjectMocks
-    private LoseThirdServlet loseThirdServlet;
-
+    private GameStartFailureServlet gameStartFailureServlet;
     @Test
     public void testDoPostWithFalse() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test false message", "jsp/lose.jsp");
+        AnswerChallenge mockAnswer = new AnswerChallenge("Test false message", "jsp/gameFailure.jsp");
 
         when(req.getParameter("answer")).thenReturn("false");
-        when(thirdService.call(false)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher("jsp/lose.jsp")).thenReturn(requestDispatcher);
+        when(gameInitializationService.call(false)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher("jsp/gameFailure.jsp")).thenReturn(requestDispatcher);
 
-        loseThirdServlet.doPost(req, resp);
+        gameStartFailureServlet.doPost(req, resp);
 
         verify(resp).setStatus(201);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher("jsp/lose.jsp");
+        verify(req).getRequestDispatcher("jsp/gameFailure.jsp");
         verify(requestDispatcher).forward(req, resp);
     }
 }

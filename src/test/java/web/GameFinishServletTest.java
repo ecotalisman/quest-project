@@ -1,12 +1,13 @@
-package web.lose;
+package web;
 
 import models.AnswerChallenge;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.SecondService;
+import service.GameFinishService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,10 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
-class LoseSecondServletTest {
+class GameFinishServletTest extends Mockito {
     @Mock
     private HttpServletRequest req;
     @Mock
@@ -25,23 +24,22 @@ class LoseSecondServletTest {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private SecondService secondService;
+    private GameFinishService gameFinishService;
     @InjectMocks
-    private LoseSecondServlet loseSecondServlet;
-
+    private GameFinishServlet gameFinishServlet;
     @Test
-    public void testDoPostWithFalse() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test false message", "jsp/lose.jsp");
+    public void testDoPostWithTrue() throws ServletException, IOException {
+        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", "jsp/gameFinish.jsp");
 
-        when(req.getParameter("answer")).thenReturn("false");
-        when(secondService.call(false)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher("jsp/lose.jsp")).thenReturn(requestDispatcher);
+        when(req.getParameter("answer")).thenReturn("true");
+        when(gameFinishService.call(true)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher("jsp/gameFinish.jsp")).thenReturn(requestDispatcher);
 
-        loseSecondServlet.doPost(req, resp);
+        gameFinishServlet.doPost(req, resp);
 
         verify(resp).setStatus(201);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher("jsp/lose.jsp");
+        verify(req).getRequestDispatcher("jsp/gameFinish.jsp");
         verify(requestDispatcher).forward(req, resp);
     }
 }
