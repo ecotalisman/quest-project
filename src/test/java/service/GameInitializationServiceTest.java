@@ -3,7 +3,7 @@ package service;
 import models.AnswerChallenge;
 import org.junit.jupiter.api.Test;
 
-import static config.AppConfig.*;
+import static constants.Constants.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 

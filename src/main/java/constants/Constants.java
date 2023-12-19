@@ -1,6 +1,6 @@
-package config;
+package constants;
 
-public final class AppConfig {
+public final class Constants {
     public static final String STEP_START_ACCEPTED = "Ви зайшли в поселення";
     public static final String STEP_START_NOT_ACCEPTED = "Ви відмовилися заходити в поселення";
     public static final String STEP_1_ACCEPTED = "1-е завдання було успішно виконане!";

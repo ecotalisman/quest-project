@@ -1,4 +1,4 @@
-<%@ page import="config.AppConfig" %>
+<%@ page import="constants.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -13,9 +13,9 @@
 </div>
 <div class="centered-text">
     <div class="prompt">
-        <c:set var="gameStartFailure" value="<%= AppConfig.STEP_START_NOT_ACCEPTED %>" />
-        <c:set var="gameChallengeFailure" value="<%= AppConfig.STEP_1_NOT_ACCEPTED %>" />
-        <c:set var="gameFinishFailure" value="<%= AppConfig.STEP_2_NOT_ACCEPTED %>" />
+        <c:set var="gameStartFailure" value="<%= Constants.STEP_START_NOT_ACCEPTED %>" />
+        <c:set var="gameChallengeFailure" value="<%= Constants.STEP_1_NOT_ACCEPTED %>" />
+        <c:set var="gameFinishFailure" value="<%= Constants.STEP_2_NOT_ACCEPTED %>" />
 
         <c:if test="${answer == gameStartFailure}">
             <h4>Ваша 'Одіссея' закінчена.</h4>

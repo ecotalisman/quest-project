@@ -22,7 +22,7 @@ public class GameStartServlet extends HttpServlet {
         LOGGER.info("Method doPost() GameStartServlet started");
         AnswerChallenge answer = gameInitializationService.call(Boolean.parseBoolean(req.getParameter("answer")));
 
-        resp.setStatus(201);
+        resp.setStatus(200);
         req.setAttribute("answer", answer.getMessage());
         req.getRequestDispatcher(answer.getPage()).forward(req, resp);
         LOGGER.info("Method doPost() GameStartServlet finished");

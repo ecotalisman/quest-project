@@ -37,7 +37,7 @@ class GameChallengeServletTest extends Mockito {
 
         gameChallengeServlet.doPost(req, resp);
 
-        verify(resp).setStatus(201);
+        verify(resp).setStatus(200);
         verify(req, times(1)).getParameter("answer");
         verify(req).getRequestDispatcher("jsp/gameChallenge.jsp");
         verify(requestDispatcher).forward(req, resp);

@@ -4,7 +4,7 @@ import models.AnswerChallenge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static config.AppConfig.*;
+import static constants.Constants.*;
 
 public class GameChallengeService {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameChallengeService.class);
