@@ -13,10 +13,10 @@ public class GameFinishService {
         LOGGER.info("Method call() GameFinishService started");
         if (isAccepted) {
             LOGGER.info("Method call() GameFinishService end with boolean true");
-            return new AnswerChallenge(STEP_2_ACCEPTED, "jsp/gameFinish.jsp");
+            return new AnswerChallenge(STEP_2_ACCEPTED, GAME_FINISH);
         } else {
             LOGGER.info("Method call() GameFinishService end with boolean false");
-            return new AnswerChallenge(STEP_2_NOT_ACCEPTED, "jsp/gameFailure.jsp");
+            return new AnswerChallenge(STEP_2_NOT_ACCEPTED, GAME_FAILURE);
         }
     }
 }

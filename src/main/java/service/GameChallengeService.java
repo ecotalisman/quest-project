@@ -13,10 +13,10 @@ public class GameChallengeService {
         LOGGER.info("Method call() GameChallengeService started");
         if (isAccepted) {
             LOGGER.info("Method call() GameChallengeService end with boolean true");
-            return new AnswerChallenge(STEP_1_ACCEPTED, "jsp/gameChallenge.jsp");
+            return new AnswerChallenge(STEP_1_ACCEPTED, GAME_CHALLENGE);
         } else {
             LOGGER.info("Method call() GameChallengeService end with boolean false");
-            return new AnswerChallenge(STEP_1_NOT_ACCEPTED, "jsp/gameFailure.jsp");
+            return new AnswerChallenge(STEP_1_NOT_ACCEPTED, GAME_FAILURE);
         }
     }
 }

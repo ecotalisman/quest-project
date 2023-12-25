@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static constants.Constants.*;
+
 @ExtendWith(MockitoExtension.class)
 class GameStartServletTest extends Mockito {
     @Mock
@@ -29,17 +31,17 @@ class GameStartServletTest extends Mockito {
     private GameStartServlet gameStartServlet;
     @Test
     public void testDoPostWithTrue() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", "jsp/gameStart.jsp");
+        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", GAME_START);
 
         when(req.getParameter("answer")).thenReturn("true");
         when(gameInitializationService.call(true)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher("jsp/gameStart.jsp")).thenReturn(requestDispatcher);
+        when(req.getRequestDispatcher(GAME_START)).thenReturn(requestDispatcher);
 
         gameStartServlet.doPost(req, resp);
 
         verify(resp).setStatus(200);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher("jsp/gameStart.jsp");
+        verify(req).getRequestDispatcher(GAME_START);
         verify(requestDispatcher).forward(req, resp);
     }
 }

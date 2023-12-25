@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/finishfailure")
+@WebServlet("/finish-failure")
 public class GameFinishFailureServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameFinishFailureServlet.class);
     GameFinishService gameFinishService = new GameFinishService();

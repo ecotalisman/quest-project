@@ -31,7 +31,7 @@
                 <input type="hidden" name="answer" value="true"/>
                 <button type="submit" class="agree">Погодитися</button>
             </form>
-            <form action="/startfailure" method="post">
+            <form action="/start-failure" method="post">
                 <input type="hidden" name="answer" value="false"/>
                 <button type="submit">Відмовитися</button>
             </form>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/startfailure")
+@WebServlet("/start-failure")
 public class GameStartFailureServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameStartFailureServlet.class);
     GameInitializationService gameInitializationService = new GameInitializationService();

@@ -16,7 +16,7 @@ class GameInitializationServiceTest {
         AnswerChallenge result = gameInitializationService.call(input);
 
         assertEquals(STEP_START_ACCEPTED, result.getMessage());
-        assertEquals("jsp/gameStart.jsp", result.getPage());
+        assertEquals(GAME_START, result.getPage());
     }
 
     @Test
@@ -25,6 +25,6 @@ class GameInitializationServiceTest {
         AnswerChallenge result = gameInitializationService.call(input);
 
         assertEquals(STEP_START_NOT_ACCEPTED, result.getMessage());
-        assertEquals("jsp/gameFailure.jsp", result.getPage());
+        assertEquals(GAME_FAILURE, result.getPage());
     }
 }

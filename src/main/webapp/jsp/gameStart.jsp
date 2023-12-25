@@ -36,7 +36,7 @@
                 <input type="hidden" name="answer" value="true"/>
                 <button type="submit" class="agree">Виконати всі завдання</button>
             </form>
-            <form action="/challengefailure" method="post">
+            <form action="/challenge-failure" method="post">
                 <input type="hidden" name="answer" value="false"/>
                 <button type="submit">Відмовитися</button>
             </form>

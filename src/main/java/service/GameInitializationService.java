@@ -13,10 +13,10 @@ public class GameInitializationService {
         LOGGER.info("Method call() GameInitializationService started");
         if (isAccepted) {
             LOGGER.info("Method call() GameInitializationService end with boolean true");
-            return new AnswerChallenge(STEP_START_ACCEPTED, "jsp/gameStart.jsp");
+            return new AnswerChallenge(STEP_START_ACCEPTED, GAME_START);
         } else {
             LOGGER.info("Method call() GameInitializationService end with boolean false");
-            return new AnswerChallenge(STEP_START_NOT_ACCEPTED, "jsp/gameFailure.jsp");
+            return new AnswerChallenge(STEP_START_NOT_ACCEPTED, GAME_FAILURE);
         }
     }
 }

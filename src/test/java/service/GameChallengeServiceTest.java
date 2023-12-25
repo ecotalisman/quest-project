@@ -15,7 +15,7 @@ class GameChallengeServiceTest {
         AnswerChallenge result = gameChallengeService.call(input);
 
         assertEquals(STEP_1_ACCEPTED, result.getMessage());
-        assertEquals("jsp/gameChallenge.jsp", result.getPage());
+        assertEquals(GAME_CHALLENGE, result.getPage());
     }
 
     @Test
@@ -24,6 +24,6 @@ class GameChallengeServiceTest {
         AnswerChallenge result = gameChallengeService.call(input);
 
         assertEquals(STEP_1_NOT_ACCEPTED, result.getMessage());
-        assertEquals("jsp/gameFailure.jsp", result.getPage());
+        assertEquals(GAME_FAILURE, result.getPage());
     }
 }

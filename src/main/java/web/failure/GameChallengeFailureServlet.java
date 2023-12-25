@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/challengefailure")
+@WebServlet("/challenge-failure")
 public class GameChallengeFailureServlet extends HttpServlet {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameChallengeFailureServlet.class);
     GameChallengeService gameChallengeService = new GameChallengeService();
