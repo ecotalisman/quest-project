@@ -1,6 +1,6 @@
 package web.failure;
 
-import models.AnswerChallenge;
+import models.Answer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,17 +32,17 @@ class LoseGameFinishServletTest {
 
     @Test
     public void testDoPostWithFalse() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test false message", GAME_FAILURE);
+        Answer mockAnswer = new Answer("Test false message", GAME_FAILURE_PAGE);
 
         when(req.getParameter("answer")).thenReturn("false");
         when(gameFinishService.call(false)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher(GAME_FAILURE)).thenReturn(requestDispatcher);
+        when(req.getRequestDispatcher(GAME_FAILURE_PAGE)).thenReturn(requestDispatcher);
 
         gameFinishFailureServlet.doPost(req, resp);
 
         verify(resp).setStatus(200);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher(GAME_FAILURE);
+        verify(req).getRequestDispatcher(GAME_FAILURE_PAGE);
         verify(requestDispatcher).forward(req, resp);
     }
 }

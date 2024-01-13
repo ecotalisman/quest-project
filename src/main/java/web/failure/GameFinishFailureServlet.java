@@ -1,6 +1,6 @@
 package web.failure;
 
-import models.AnswerChallenge;
+import models.Answer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import service.GameFinishService;
@@ -19,7 +19,7 @@ public class GameFinishFailureServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info("Method doPost() GameFinishFailureServlet started");
-        AnswerChallenge answer = gameFinishService.call(Boolean.parseBoolean(req.getParameter("answer")));
+        Answer answer = gameFinishService.call(Boolean.parseBoolean(req.getParameter("answer")));
 
         resp.setStatus(200);
         req.setAttribute("answer", answer.getMessage());

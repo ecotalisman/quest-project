@@ -36,7 +36,7 @@
                 <button type="submit">Відмовитися</button>
             </form>
         </div>
-            <h5>Ім'я мандрівника: ${sessionScope.nickname}</h5>
+            <h5>Ім'я мандрівника: ${sessionScope.userName}</h5>
             <h5>Кількість спроб: ${sessionScope.gameCounter}</h5>
     </div>
 </div>

@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AnswerChallengeTest {
+class AnswerTest {
     @Test
     public void testGetMessageAndGetPage() {
         String expectedMessage = "true";
         String expectedPage = "index.jsp";
-        AnswerChallenge answer = new AnswerChallenge(expectedMessage, expectedPage);
+        Answer answer = new Answer(expectedMessage, expectedPage);
 
         assertEquals(expectedMessage, answer.getMessage());
         assertEquals(expectedPage, answer.getPage());
@@ -20,7 +20,7 @@ class AnswerChallengeTest {
         String expectedMessage = "false";
         String expectedPage = "index.jsp";
 
-        AnswerChallenge answer = new AnswerChallenge();
+        Answer answer = new Answer();
         answer.setMessage(expectedMessage);
         answer.setPage(expectedPage);
 

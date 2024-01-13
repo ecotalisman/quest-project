@@ -2,7 +2,7 @@ package web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import web.failure.GameChallengeFailureServlet;
+import web.failure.GameFailureServlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/restart")
 public class RestartGameServlet extends HttpServlet {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GameChallengeFailureServlet.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GameFailureServlet.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.info("Method doGet() RestartGameServlet started");

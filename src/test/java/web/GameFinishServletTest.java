@@ -1,6 +1,6 @@
 package web;
 
-import models.AnswerChallenge;
+import models.Answer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,17 +31,17 @@ class GameFinishServletTest extends Mockito {
     private GameFinishServlet gameFinishServlet;
     @Test
     public void testDoPostWithTrue() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", GAME_FINISH);
+        Answer mockAnswer = new Answer("Test true message", GAME_FINISH_PAGE);
 
         when(req.getParameter("answer")).thenReturn("true");
         when(gameFinishService.call(true)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher(GAME_FINISH)).thenReturn(requestDispatcher);
+        when(req.getRequestDispatcher(GAME_FINISH_PAGE)).thenReturn(requestDispatcher);
 
         gameFinishServlet.doPost(req, resp);
 
         verify(resp).setStatus(200);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher(GAME_FINISH);
+        verify(req).getRequestDispatcher(GAME_FINISH_PAGE);
         verify(requestDispatcher).forward(req, resp);
     }
 }

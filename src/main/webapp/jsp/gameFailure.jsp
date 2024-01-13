@@ -5,7 +5,7 @@
 <html>
 <head>
     <link href="/../css/style.css" rel="stylesheet">
-    <title>Finish</title>
+    <title>Game Failure</title>
 </head>
 <body>
 <div class="header-container centered-text">
@@ -14,14 +14,14 @@
 <div class="centered-text">
     <div class="prompt">
         <c:set var="gameStartFailure" value="<%= Constants.STEP_START_NOT_ACCEPTED %>" />
-        <c:set var="gameChallengeFailure" value="<%= Constants.STEP_1_NOT_ACCEPTED %>" />
+        <c:set var="gameFailure" value="<%= Constants.STEP_1_NOT_ACCEPTED %>" />
         <c:set var="gameFinishFailure" value="<%= Constants.STEP_2_NOT_ACCEPTED %>" />
 
         <c:if test="${answer == gameStartFailure}">
             <h4>Ваша 'Одіссея' закінчена.</h4>
         </c:if>
 
-        <c:if test="${answer == gameChallengeFailure}">
+        <c:if test="${answer == gameFailure}">
             <h4>Вашої хоробрості та мудрості не вистачило для пошуку артефакту "Око Світу"...</h4>
         </c:if>
 

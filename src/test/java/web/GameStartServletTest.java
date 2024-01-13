@@ -1,13 +1,13 @@
 package web;
 
-import models.AnswerChallenge;
+import models.Answer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.GameInitializationService;
+import service.GameStartService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,22 +26,22 @@ class GameStartServletTest extends Mockito {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private GameInitializationService gameInitializationService;
+    private GameStartService gameStartService;
     @InjectMocks
     private GameStartServlet gameStartServlet;
     @Test
     public void testDoPostWithTrue() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", GAME_START);
+        Answer mockAnswer = new Answer("Test true message", GAME_START_PAGE);
 
         when(req.getParameter("answer")).thenReturn("true");
-        when(gameInitializationService.call(true)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher(GAME_START)).thenReturn(requestDispatcher);
+        when(gameStartService.call(true)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher(GAME_START_PAGE)).thenReturn(requestDispatcher);
 
         gameStartServlet.doPost(req, resp);
 
         verify(resp).setStatus(200);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher(GAME_START);
+        verify(req).getRequestDispatcher(GAME_START_PAGE);
         verify(requestDispatcher).forward(req, resp);
     }
 }

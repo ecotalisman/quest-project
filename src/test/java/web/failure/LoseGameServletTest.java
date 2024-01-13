@@ -1,13 +1,12 @@
-package web;
+package web.failure;
 
-import models.AnswerChallenge;
+import models.Answer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import service.GameChallengeService;
+import service.GameService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,9 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static constants.Constants.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class GameChallengeServletTest extends Mockito {
+class LoseGameServletTest {
     @Mock
     private HttpServletRequest req;
     @Mock
@@ -26,22 +26,23 @@ class GameChallengeServletTest extends Mockito {
     @Mock
     private RequestDispatcher requestDispatcher;
     @Mock
-    private GameChallengeService gameChallengeService;
+    private GameService gameService;
     @InjectMocks
-    private GameChallengeServlet gameChallengeServlet;
+    private GameFailureServlet gameFailureServlet;
+
     @Test
-    public void testDoPostWithTrue() throws ServletException, IOException {
-        AnswerChallenge mockAnswer = new AnswerChallenge("Test true message", GAME_CHALLENGE);
+    public void testDoPostWithFalse() throws ServletException, IOException {
+        Answer mockAnswer = new Answer("Test false message", GAME_FAILURE_PAGE);
 
-        when(req.getParameter("answer")).thenReturn("true");
-        when(gameChallengeService.call(true)).thenReturn(mockAnswer);
-        when(req.getRequestDispatcher(GAME_CHALLENGE)).thenReturn(requestDispatcher);
+        when(req.getParameter("answer")).thenReturn("false");
+        when(gameService.call(false)).thenReturn(mockAnswer);
+        when(req.getRequestDispatcher(GAME_FAILURE_PAGE)).thenReturn(requestDispatcher);
 
-        gameChallengeServlet.doPost(req, resp);
+        gameFailureServlet.doPost(req, resp);
 
         verify(resp).setStatus(200);
         verify(req, times(1)).getParameter("answer");
-        verify(req).getRequestDispatcher(GAME_CHALLENGE);
+        verify(req).getRequestDispatcher(GAME_FAILURE_PAGE);
         verify(requestDispatcher).forward(req, resp);
     }
 }

@@ -38,13 +38,13 @@ class SessionFilterTest {
     public void TestDoFilterInitializeSessionAttributes(String path) throws ServletException, IOException {
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("gameCounter")).thenReturn(null);
-        when(session.getAttribute("nickname")).thenReturn(null);
+        when(session.getAttribute("name")).thenReturn(null);
         when(request.getServletPath()).thenReturn(path);
 
         sessionFilter.doFilter(request, response, chain);
 
         verify(session).setAttribute("gameCounter", 1);
-        verify(session).setAttribute(eq("nickname"), anyString());
+        verify(session).setAttribute(eq("name"), anyString());
         verify(chain).doFilter(request, response);
     }
 
@@ -52,13 +52,13 @@ class SessionFilterTest {
     public void TestDoFilterWhenGameCounterExists() throws ServletException, IOException {
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("gameCounter")).thenReturn(2);
-        when(session.getAttribute("nickname")).thenReturn("ExistingNickname");
+        when(session.getAttribute("name")).thenReturn("ExistingNickname");
         when(request.getServletPath()).thenReturn("/restart");
 
         sessionFilter.doFilter(request, response, chain);
 
         verify(session).setAttribute("gameCounter", 3);
-        verify(session, never()).setAttribute(eq("nickname"), anyString());
+        verify(session, never()).setAttribute(eq("name"), anyString());
         verify(chain).doFilter(request, response);
     }
 
@@ -66,12 +66,12 @@ class SessionFilterTest {
     public void TestDoFilterForOtherPaths() throws ServletException, IOException {
         when(request.getSession()).thenReturn(session);
         when(request.getServletPath()).thenReturn("/otherPath");
-        when(session.getAttribute("nickname")).thenReturn("ExistingNickname");
+        when(session.getAttribute("name")).thenReturn("ExistingNickname");
 
         sessionFilter.doFilter(request, response, chain);
 
         verify(session, never()).setAttribute(eq("gameCounter"), anyInt());
-        verify(session, never()).setAttribute(eq("nickname"), anyString());
+        verify(session, never()).setAttribute(eq("name"), anyString());
         verify(chain).doFilter(request, response);
     }
 }

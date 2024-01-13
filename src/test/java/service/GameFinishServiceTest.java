@@ -1,6 +1,6 @@
 package service;
 
-import models.AnswerChallenge;
+import models.Answer;
 import org.junit.jupiter.api.Test;
 
 import static constants.Constants.*;
@@ -12,18 +12,18 @@ class GameFinishServiceTest {
     @Test
     public void testCallTrueShouldReturnStartAccepted() {
         boolean input = true;
-        AnswerChallenge result = gameFinishService.call(input);
+        Answer result = gameFinishService.call(input);
 
         assertEquals(STEP_2_ACCEPTED, result.getMessage());
-        assertEquals(GAME_FINISH, result.getPage());
+        assertEquals(GAME_FINISH_PAGE, result.getPage());
     }
 
     @Test
     public void testCallTrueShouldReturnStartNotAccepted() {
         boolean input = false;
-        AnswerChallenge result = gameFinishService.call(input);
+        Answer result = gameFinishService.call(input);
 
         assertEquals(STEP_2_NOT_ACCEPTED, result.getMessage());
-        assertEquals(GAME_FAILURE, result.getPage());
+        assertEquals(GAME_FAILURE_PAGE, result.getPage());
     }
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
     <link href="/../css/style.css" rel="stylesheet">
-    <title>Step-2</title>
+    <title>Game</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>

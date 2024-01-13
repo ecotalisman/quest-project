@@ -4,7 +4,7 @@
 <html>
 <head>
     <link href="/../css/style.css" rel="stylesheet">
-    <title>Step-2</title>
+    <title>Game Start</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
@@ -32,11 +32,13 @@
             </ol>
         </div>
         <div class="button-container">
-            <form action="/challenge" method="post">
+            <form action="/game" method="post">
+                <label for="name">Введіть ваше ім'я:</label>
+                <input type="text" id="name" name="name" required>
                 <input type="hidden" name="answer" value="true"/>
                 <button type="submit" class="agree">Виконати всі завдання</button>
             </form>
-            <form action="/challenge-failure" method="post">
+            <form action="/game-failure" method="post">
                 <input type="hidden" name="answer" value="false"/>
                 <button type="submit">Відмовитися</button>
             </form>

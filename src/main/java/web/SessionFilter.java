@@ -31,11 +31,11 @@ public class SessionFilter implements Filter {
             session.setAttribute("gameCounter", gameCounter);
         }
 
-        if (httpRequest.getSession().getAttribute("nickname") == null) {
-            LOGGER.info("No nickname found in session, setting default nickname: Travel Hobbit");
-            httpRequest.getSession().setAttribute("nickname", "Travel Hobbit");
+        if (httpRequest.getSession().getAttribute("userName") == null) {
+            LOGGER.info("No name found in session, setting default name: Travel Hobbit");
+            httpRequest.getSession().setAttribute("userName", "Travel Hobbit");
         } else {
-            LOGGER.info(String.format("Setting nickname in session: %s", httpRequest.getSession().getAttribute("nickname")));
+            LOGGER.info(String.format("Setting name in session: %s", httpRequest.getSession().getAttribute("userName")));
         }
         chain.doFilter(request, response);
         LOGGER.info("Method doFilter() SessionFilter finished");
